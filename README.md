@@ -27,6 +27,12 @@ The environment is orchestrated by a docker compose file that lives on the root 
 $ docker compose up --build
 ```
 
+**IMPORTANT**
+If you're running this application locally, you should create a `.env` following the structure below:
+```bash
+OPENAI_API_KEY=<your_key_here>
+``` 
+
 ## License 
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.

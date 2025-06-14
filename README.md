@@ -20,6 +20,38 @@ A visual GUI to design, simulate, and debug autonomous LLM agents. The goal is t
 - **LLMs**: OpenAI, Ollama, or local models
 - **Database**: SQLite / Postgres for configs, and ChromaDB
 
+## The Architecture Structure
+
+A bird's eye view of how we separate concerns in order to keep the code more maintainable
+
+```bash
+backend/
+├── app/
+│   ├── api/                        # API layer (routes)
+│   │   ├── __init__.py
+│   │   ├── v1/                     # API versioning
+│   │   │   ├── __init__.py
+│   │   │   ├── endpoints/          # Route handlers
+│   │   │   └── router.py           # Router configuration
+│   ├── core/                       # Core application code
+│   │   ├── __init__.py
+│   │   ├── config.py               # Configuration management
+│   │   └── security.py             # Security related code
+│   ├── domain/                     # Domain layer
+│   │   ├── __init__.py
+│   │   ├── models/                 # Domain models
+│   │   └── services/               # Business logic
+│   ├── infrastructure/             # Infrastructure layer
+│   │   ├── __init__.py
+│   │   ├── database/               # Database related code
+│   │   └── external/               # External service integrations
+│   ├── schemas/                    # Pydantic models for request/response
+│   │   ├── __init__.py
+│   │   ├── requests/
+│   │   └── responses/
+│   └── main.py                     # Application entry point
+```
+
 ## Running The Environment
 The environment is orchestrated by a docker compose file that lives on the root folder of the project.
 

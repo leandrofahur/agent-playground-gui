@@ -42,3 +42,21 @@ def llm_init(model = str('gpt-3.5-turbo'), temperature = float(0.1)):
     llm = ChatOpenAI(model=model, temperature=temperature, openai_api_key=OPENAI_API_KEY)
     return llm
     
+def swagger_metadata_config() -> list[dict]:
+    '''
+    @param: None
+    @return: list[dict]
+    @description: This function is used to configure the Swagger metadata.
+    '''
+    return [{
+        "name": "system",
+        "description": "System API",        
+    },
+    {
+        "name": "user",
+        "description": "User API",
+    },
+    {
+        "name": "agents",
+        "description": "Agents API",
+    }]

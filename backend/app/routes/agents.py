@@ -1,22 +1,10 @@
 from fastapi import APIRouter
-from pydantic import BaseModel
+from models.requests import AgentSimulateRequest
+from models.responses import AgentSimulateResponse, AgentToolResponse
 
 router = APIRouter()
 
-class AgentSimulateRequest(BaseModel):
-    goal: str = ""
-    agent_type: str = "langchain"
-    tools: list[str] = []
-    memory: dict = {}
-    retry: dict = {}
-    verbose: bool = True
-
-class AgentSimulateResponse(BaseModel):
-    status: str = "failed"
-    steps: list[dict] = [{"tool": "", "input": "", "output": "", "success": False}]
-    final_output: str = ""
-
-@router.post("/agents/simulate")
+@router.post("/agents/simulate", tags=["agents"])
 def simulate_agent(payload: AgentSimulateRequest) -> AgentSimulateResponse:
     '''
     @param: payload: AgentSimulateRequest
@@ -40,3 +28,16 @@ def simulate_agent(payload: AgentSimulateRequest) -> AgentSimulateResponse:
         ], 
         final_output="final_output"
     )
+
+@router.get("/agents/tools", tags=["agents"])
+def get_tools() -> list[AgentToolResponse]:
+    '''
+    @param: None
+    @return: list[str]
+    @description: This endpoint is used to get the tools.
+    '''    
+    return [
+        AgentToolResponse(name="tool1", description="tool1 description", params=["param1", "param2", "param3"]),
+        AgentToolResponse(name="tool2", description="tool2 description", params=[]),
+        AgentToolResponse(name="tool3", description="tool3 description", params=["param1"]),
+    ]

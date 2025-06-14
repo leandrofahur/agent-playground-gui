@@ -2,7 +2,7 @@ from fastapi import APIRouter
 
 router = APIRouter()
 
-@router.get("/user/me")
+@router.get("/user/me", tags=["user"])
 def get_user():
     '''
     @param: None

@@ -51,11 +51,7 @@ def swagger_metadata_config() -> list[dict]:
     return [{
         "name": "system",
         "description": "System API",        
-    },
-    {
-        "name": "user",
-        "description": "User API",
-    },
+    },    
     {
         "name": "agents",
         "description": "Agents API",

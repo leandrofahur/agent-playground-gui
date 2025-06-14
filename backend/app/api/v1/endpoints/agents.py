@@ -1,6 +1,6 @@
 from fastapi import APIRouter
-from models.requests import AgentSimulateRequest
-from models.responses import AgentSimulateResponse, AgentToolResponse
+from schemas.requests.requests import AgentSimulateRequest
+from schemas.responses.responses import AgentSimulateResponse, AgentToolResponse
 
 router = APIRouter()
 

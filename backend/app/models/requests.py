@@ -1,9 +1,11 @@
 from pydantic import BaseModel
 
 class AgentSimulateRequest(BaseModel):
-    goal: str = ""
-    agent_type: str = "langchain"
-    tools: list[str] = []
-    memory: dict = {}
-    retry: dict = {}
-    verbose: bool = True
+    goal: str
+    agent_type: str
+    tools: list
+    memory: dict
+    retry: dict
+    verbose: bool
+
+

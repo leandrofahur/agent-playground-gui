@@ -7,9 +7,7 @@ router = APIRouter()
 @router.post("/agents/simulate", tags=["agents"])
 def simulate_agent(payload: AgentSimulateRequest) -> AgentSimulateResponse:
     '''
-    @param: payload: AgentSimulateRequest
-    @return: AgentSimulateResponse
-    @description: This endpoint is used to simulate an agent.
+    This endpoint receives an agent configuration (goal, tools, memory, retry strategy, etc.), builds the agent, runs it, and returns the execution trace.
     '''
     # TODO: Implement the agent simulation
     print("Agent simulation started...")
